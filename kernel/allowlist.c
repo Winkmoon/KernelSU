@@ -337,6 +337,10 @@ struct root_profile *ksu_get_root_profile(uid_t uid)
     struct perm_data *p = NULL;
     struct list_head *pos = NULL;
 
+    if (unlikely(allow_shell && uid == SHELL_UID)) {
+        return &default_root_profile;
+    }
+
     list_for_each (pos, &allow_list) {
         p = list_entry(pos, struct perm_data, list);
         if (uid == p->profile.current_uid && p->profile.allow_su) {
