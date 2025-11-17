@@ -108,12 +108,20 @@ enum Commands {
         partition: Option<String>,
 
         /// Always allow shell to get root permission
-        #[arg(short, long, default_value = "false")]
+        #[arg(long, default_value = "false")]
         allow_shell: bool,
 
-        /// Force enable adbd and disable adbd auth, implies allow_shell
-        #[arg(short, long, default_value = "false")]
-        force_debuggable: bool,
+        /// Force enable adbd and disable adbd auth
+        #[arg(long, default_value = "false")]
+        enable_adbd: bool,
+
+        /// Add more adb_debug prop
+        #[arg(long, required = false)]
+        adb_debug_prop: Option<String>,
+
+        /// Do not (re-)install kernelsu, only modify configs (allow_shell, etc.)
+        #[arg(long, default_value = "false")]
+        no_install: bool,
     },
 
     /// Restore boot or init_boot images patched by KernelSU
@@ -506,7 +514,9 @@ pub fn run() -> Result<()> {
             kmi,
             partition,
             allow_shell,
-            force_debuggable,
+            enable_adbd,
+            adb_debug_prop,
+            no_install,
         } => crate::boot_patch::patch(
             boot,
             kernel,
@@ -519,7 +529,9 @@ pub fn run() -> Result<()> {
             kmi,
             partition,
             allow_shell,
-            force_debuggable,
+            enable_adbd,
+            adb_debug_prop,
+            no_install,
         ),
 
         Commands::BootInfo { command } => match command {

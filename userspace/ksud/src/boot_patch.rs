@@ -351,7 +351,9 @@ pub fn patch(
     kmi: Option<String>,
     partition: Option<String>,
     allow_shell: bool,
-    force_debuggable: bool,
+    enable_adbd: bool,
+    adb_debug_prop: Option<String>,
+    no_install: bool,
 ) -> Result<()> {
     let result = do_patch(
         image,
@@ -365,7 +367,9 @@ pub fn patch(
         kmi,
         partition,
         allow_shell,
-        force_debuggable,
+        enable_adbd,
+        adb_debug_prop,
+        no_install,
     );
     if let Err(ref e) = result {
         println!("- Install Error: {e}");
@@ -386,7 +390,9 @@ fn do_patch(
     kmi: Option<String>,
     partition: Option<String>,
     allow_shell: bool,
-    force_debuggable: bool,
+    enable_adbd: bool,
+    adb_debug_prop: Option<String>,
+    no_install: bool,
 ) -> Result<()> {
     println!(include_str!("banner"));
 
@@ -406,9 +412,6 @@ fn do_patch(
         );
     }
 
-    let can_skip_add_lkm =
-        kernel.is_none() && init.is_none() && kmod.is_none() && (allow_shell || force_debuggable);
-
     let tmpdir = tempfile::Builder::new()
         .prefix("KernelSU")
         .tempdir()
@@ -420,7 +423,7 @@ fn do_patch(
 
     let kmi = if let Some(kmi) = kmi {
         kmi
-    } else if can_skip_add_lkm {
+    } else if no_install {
         "".to_string()
     } else {
         match get_current_kmi() {
@@ -463,7 +466,7 @@ fn do_patch(
     let kmod_file = workdir.join("kernelsu.ko");
     if let Some(kmod) = kmod {
         std::fs::copy(kmod, kmod_file).context("copy kernel module failed")?;
-    } else if !can_skip_add_lkm {
+    } else if !no_install {
         // If kmod is not specified, extract from assets
         println!("- KMI: {kmi}");
         let name = format!("{kmi}_kernelsu.ko");
@@ -474,7 +477,7 @@ fn do_patch(
     let init_file = workdir.join("init");
     if let Some(init) = init {
         std::fs::copy(init, init_file).context("copy init failed")?;
-    } else if !can_skip_add_lkm {
+    } else if !no_install {
         assets::copy_assets_to_file("ksuinit", init_file).context("copy ksuinit failed")?;
     }
 
@@ -501,7 +504,7 @@ fn do_patch(
     }
     let ramdisk = ramdisk.as_path();
     let mut need_backup = false;
-    if !can_skip_add_lkm {
+    if !no_install {
         let is_magisk_patched = is_magisk_patched(&magiskboot, workdir, ramdisk)?;
         ensure!(!is_magisk_patched, "Cannot work with Magisk patched image");
 
@@ -526,7 +529,7 @@ fn do_patch(
         )?;
     }
 
-    if allow_shell || force_debuggable {
+    if allow_shell {
         println!("- Adding allow shell config");
         {
             let allow_shell_file = workdir.join("ksu_allow_shell");
@@ -540,8 +543,8 @@ fn do_patch(
         )?;
     }
 
-    if force_debuggable {
-        println!("- Adding force debuggable props");
+    if enable_adbd || adb_debug_prop.is_some() {
+        println!("- Adding adb_debug props");
         {
             let force_debuggable_file = workdir.join("force_debuggable");
             File::create(force_debuggable_file)?;
@@ -554,17 +557,19 @@ fn do_patch(
         )?;
 
         {
-            let adb_debug_prop = workdir.join("adb_debug.prop");
-            let mut prop_file = File::create(adb_debug_prop)?;
-            write!(
-                prop_file,
-                "\
-                ro.debuggable=1\n\
-                ro.force.debuggable=1\n\
-                ro.adb.secure=0\n\
-                ro.boot.apex.early_adbd=1\n\
-            "
-            )?;
+            let prop_path = workdir.join("adb_debug.prop");
+            let mut prop_file = File::create(prop_path)?;
+            if enable_adbd {
+                println!("- Adding props to enable adbd");
+                write!(
+                    prop_file,
+                    "ro.debuggable=1\nro.force.debuggable=1\nro.adb.secure=0\n"
+                )?;
+            }
+            if let Some(props) = adb_debug_prop {
+                println!("- Adding custom props");
+                prop_file.write_all(props.as_bytes())?;
+            }
         }
         do_cpio_cmd(
             &magiskboot,
