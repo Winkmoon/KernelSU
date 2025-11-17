@@ -1,3 +1,5 @@
+use std::fs::File;
+use std::io::Write;
 #[cfg(unix)]
 use std::os::unix::fs::PermissionsExt;
 use std::path::Path;
@@ -348,9 +350,22 @@ pub fn patch(
     magiskboot: Option<PathBuf>,
     kmi: Option<String>,
     partition: Option<String>,
+    allow_shell: bool,
+    force_debuggable: bool,
 ) -> Result<()> {
     let result = do_patch(
-        image, kernel, kmod, init, ota, flash, out, magiskboot, kmi, partition,
+        image,
+        kernel,
+        kmod,
+        init,
+        ota,
+        flash,
+        out,
+        magiskboot,
+        kmi,
+        partition,
+        allow_shell,
+        force_debuggable,
     );
     if let Err(ref e) = result {
         println!("- Install Error: {e}");
@@ -370,6 +385,8 @@ fn do_patch(
     magiskboot_path: Option<PathBuf>,
     kmi: Option<String>,
     partition: Option<String>,
+    allow_shell: bool,
+    force_debuggable: bool,
 ) -> Result<()> {
     println!(include_str!("banner"));
 
@@ -389,6 +406,9 @@ fn do_patch(
         );
     }
 
+    let can_skip_add_lkm =
+        kernel.is_none() && init.is_none() && kmod.is_none() && (allow_shell || force_debuggable);
+
     let tmpdir = tempfile::Builder::new()
         .prefix("KernelSU")
         .tempdir()
@@ -400,6 +420,8 @@ fn do_patch(
 
     let kmi = if let Some(kmi) = kmi {
         kmi
+    } else if can_skip_add_lkm {
+        "".to_string()
     } else {
         match get_current_kmi() {
             Ok(value) => value,
@@ -441,7 +463,7 @@ fn do_patch(
     let kmod_file = workdir.join("kernelsu.ko");
     if let Some(kmod) = kmod {
         std::fs::copy(kmod, kmod_file).context("copy kernel module failed")?;
-    } else {
+    } else if !can_skip_add_lkm {
         // If kmod is not specified, extract from assets
         println!("- KMI: {kmi}");
         let name = format!("{kmi}_kernelsu.ko");
@@ -452,7 +474,7 @@ fn do_patch(
     let init_file = workdir.join("init");
     if let Some(init) = init {
         std::fs::copy(init, init_file).context("copy init failed")?;
-    } else {
+    } else if !can_skip_add_lkm {
         assets::copy_assets_to_file("ksuinit", init_file).context("copy ksuinit failed")?;
     }
 
@@ -478,29 +500,79 @@ fn do_patch(
         ramdisk = "ramdisk.cpio".into();
     }
     let ramdisk = ramdisk.as_path();
-    let is_magisk_patched = is_magisk_patched(&magiskboot, workdir, ramdisk)?;
-    ensure!(!is_magisk_patched, "Cannot work with Magisk patched image");
-
-    println!("- Adding KernelSU LKM");
-    let is_kernelsu_patched = is_kernelsu_patched(&magiskboot, workdir, ramdisk)?;
-
     let mut need_backup = false;
-    if !is_kernelsu_patched {
-        // kernelsu.ko is not exist, backup init if necessary
-        let status = do_cpio_cmd(&magiskboot, workdir, ramdisk, "exists init");
-        if status.is_ok() {
-            do_cpio_cmd(&magiskboot, workdir, ramdisk, "mv init init.real")?;
+    if !can_skip_add_lkm {
+        let is_magisk_patched = is_magisk_patched(&magiskboot, workdir, ramdisk)?;
+        ensure!(!is_magisk_patched, "Cannot work with Magisk patched image");
+
+        println!("- Adding KernelSU LKM");
+        let is_kernelsu_patched = is_kernelsu_patched(&magiskboot, workdir, ramdisk)?;
+
+        if !is_kernelsu_patched {
+            // kernelsu.ko is not exist, backup init if necessary
+            let status = do_cpio_cmd(&magiskboot, workdir, ramdisk, "exists init");
+            if status.is_ok() {
+                do_cpio_cmd(&magiskboot, workdir, ramdisk, "mv init init.real")?;
+            }
+            need_backup = flash;
         }
-        need_backup = flash;
+
+        do_cpio_cmd(&magiskboot, workdir, ramdisk, "add 0755 init init")?;
+        do_cpio_cmd(
+            &magiskboot,
+            workdir,
+            ramdisk,
+            "add 0755 kernelsu.ko kernelsu.ko",
+        )?;
     }
 
-    do_cpio_cmd(&magiskboot, workdir, ramdisk, "add 0755 init init")?;
-    do_cpio_cmd(
-        &magiskboot,
-        workdir,
-        ramdisk,
-        "add 0755 kernelsu.ko kernelsu.ko",
-    )?;
+    if allow_shell || force_debuggable {
+        println!("- Adding allow shell config");
+        {
+            let allow_shell_file = workdir.join("ksu_allow_shell");
+            File::create(allow_shell_file)?;
+        }
+        do_cpio_cmd(
+            &magiskboot,
+            workdir,
+            ramdisk,
+            "add 0755 ksu_allow_shell ksu_allow_shell",
+        )?;
+    }
+
+    if force_debuggable {
+        println!("- Adding force debuggable props");
+        {
+            let force_debuggable_file = workdir.join("force_debuggable");
+            File::create(force_debuggable_file)?;
+        }
+        do_cpio_cmd(
+            &magiskboot,
+            workdir,
+            ramdisk,
+            "add 0755 force_debuggable force_debuggable",
+        )?;
+
+        {
+            let adb_debug_prop = workdir.join("adb_debug.prop");
+            let mut prop_file = File::create(adb_debug_prop)?;
+            write!(
+                prop_file,
+                "\
+                ro.debuggable=1\n\
+                ro.force.debuggable=1\n\
+                ro.adb.secure=0\n\
+                ro.boot.apex.early_adbd=1\n\
+            "
+            )?;
+        }
+        do_cpio_cmd(
+            &magiskboot,
+            workdir,
+            ramdisk,
+            "add 0755 adb_debug.prop adb_debug.prop",
+        )?;
+    }
 
     #[cfg(target_os = "android")]
     if need_backup && let Err(e) = do_backup(&magiskboot, workdir, ramdisk, bootimage) {

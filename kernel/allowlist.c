@@ -280,6 +280,10 @@ bool __ksu_is_allow_uid(uid_t uid)
         return true;
     }
 
+    if (unlikely(allow_shell) && uid == 2000) {
+        return true;
+    }
+
     if (likely(uid <= BITMAP_UID_MAX)) {
         return !!(allow_list_bitmap[uid / BITS_PER_BYTE] &
                   (1 << (uid % BITS_PER_BYTE)));

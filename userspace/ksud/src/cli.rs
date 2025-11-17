@@ -106,6 +106,14 @@ enum Commands {
         /// target partition override (init_boot | boot | vendor_boot)
         #[arg(long, default_value = None)]
         partition: Option<String>,
+
+        /// Always allow shell to get root permission
+        #[arg(short, long, default_value = "false")]
+        allow_shell: bool,
+
+        /// Force enable adbd and disable adbd auth, implies allow_shell
+        #[arg(short, long, default_value = "false")]
+        force_debuggable: bool,
     },
 
     /// Restore boot or init_boot images patched by KernelSU
@@ -497,8 +505,21 @@ pub fn run() -> Result<()> {
             magiskboot,
             kmi,
             partition,
+            allow_shell,
+            force_debuggable,
         } => crate::boot_patch::patch(
-            boot, kernel, module, init, ota, flash, out, magiskboot, kmi, partition,
+            boot,
+            kernel,
+            module,
+            init,
+            ota,
+            flash,
+            out,
+            magiskboot,
+            kmi,
+            partition,
+            allow_shell,
+            force_debuggable,
         ),
 
         Commands::BootInfo { command } => match command {
