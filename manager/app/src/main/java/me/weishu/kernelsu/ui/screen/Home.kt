@@ -122,16 +122,7 @@ fun HomePager(
 
     Scaffold(
         topBar = {
-            TopBar(
-                kernelVersion = kernelVersion,
-                onInstallClick = {
-                    navigator.navigate(InstallScreenDestination) {
-                        popUpTo(InstallScreenDestination) {
-                            inclusive = true
-                        }
-                        launchSingleTop = true
-                    }
-                },
+            HomeTopBar(
                 scrollBehavior = scrollBehavior,
                 hazeState = hazeState,
                 hazeStyle = hazeStyle,
@@ -289,9 +280,7 @@ fun RebootDropdownItem(
 }
 
 @Composable
-private fun TopBar(
-    kernelVersion: KernelVersion,
-    onInstallClick: () -> Unit,
+private fun HomeTopBar(
     scrollBehavior: ScrollBehavior,
     hazeState: HazeState,
     hazeStyle: HazeStyle,
@@ -586,7 +575,7 @@ fun WarningCard(
 }
 
 @Composable
-public fun LearnMoreCard() {
+fun LearnMoreCard() {
     val uriHandler = LocalUriHandler.current
     val url = stringResource(R.string.home_learn_kernelsu_url)
 
@@ -615,7 +604,7 @@ public fun LearnMoreCard() {
 }
 
 @Composable
-public fun DonateCard() {
+fun DonateCard() {
     val uriHandler = LocalUriHandler.current
 
     Card(
@@ -643,14 +632,14 @@ public fun DonateCard() {
     }
 }
 
-public fun getManagerVersion(context: Context): Pair<String, Long> {
+fun getManagerVersion(context: Context): Pair<String, Long> {
     val packageInfo = context.packageManager.getPackageInfo(context.packageName, 0)!!
     val versionCode = PackageInfoCompat.getLongVersionCode(packageInfo)
     return Pair(packageInfo.versionName!!, versionCode)
 }
 
 @Composable
-public fun InfoCard() {
+fun InfoCard() {
     @Composable
     fun InfoText(
         title: String,
