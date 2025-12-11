@@ -97,6 +97,7 @@ import me.weishu.kernelsu.ui.util.module.fetchReleaseDescriptionHtml
 import me.weishu.kernelsu.ui.viewmodel.ModuleRepoViewModel
 import me.weishu.kernelsu.ui.viewmodel.ModuleViewModel
 import top.yukonga.miuix.kmp.basic.Card
+import top.yukonga.miuix.kmp.basic.CardDefaults
 import top.yukonga.miuix.kmp.basic.CircularProgressIndicator
 import top.yukonga.miuix.kmp.basic.HorizontalDivider
 import top.yukonga.miuix.kmp.basic.Icon
@@ -308,8 +309,7 @@ fun ModuleRepoPager(
                             .padding(horizontal = 12.dp)
                             .padding(bottom = 12.dp),
                         insideMargin = PaddingValues(16.dp),
-                        shape = ContinuousRoundedRectangle(16.dp), // 添加圆角效果
-                        elevation = 4.dp, // 添加阴影效果
+                        cornerRadius = 16.dp, // 添加圆角效果
                         showIndication = true,
                         pressFeedbackType = PressFeedbackType.Sink,
                         onClick = {
@@ -509,8 +509,7 @@ fun ModuleRepoPager(
                                     .padding(horizontal = 12.dp)
                                     .padding(bottom = 12.dp),
                                 insideMargin = PaddingValues(16.dp),
-                                shape = ContinuousRoundedRectangle(16.dp), // 添加圆角效果
-                                elevation = 4.dp, // 添加阴影效果
+                                cornerRadius = 16.dp,
                                 showIndication = true,
                                 pressFeedbackType = PressFeedbackType.Sink,
                                 onClick = {
@@ -772,8 +771,7 @@ private fun ReadmePage(
                     Spacer(Modifier.height(6.dp))
                     Card(
                         modifier = Modifier.padding(horizontal = 12.dp),
-                        shape = ContinuousRoundedRectangle(16.dp), // 添加圆角效果
-                        elevation = 4.dp, // 添加阴影效果
+                        cornerRadius = 16.dp,
                     ) {
                         Column {
                             GithubMarkdown(content = readmeHtml!!)
@@ -830,8 +828,7 @@ fun ReleasesPage(
                         .fillMaxWidth()
                         .padding(horizontal = 12.dp)
                         .padding(bottom = 12.dp),
-                    shape = ContinuousRoundedRectangle(16.dp), // 添加圆角效果
-                    elevation = 4.dp // 添加阴影效果
+                    cornerRadius = 16.dp,
                 ) {
                     Column {
                         Row(
@@ -1035,8 +1032,7 @@ fun InfoPage(
                     modifier = Modifier
                         .padding(horizontal = 12.dp),
                     insideMargin = PaddingValues(16.dp),
-                    shape = ContinuousRoundedRectangle(16.dp), // 添加圆角效果
-                    elevation = 4.dp // 添加阴影效果
+                    cornerRadius = 16.dp,
                 ) {
                     Column {
                         module.authorsList.forEachIndexed { index, author ->
@@ -1096,8 +1092,7 @@ fun InfoPage(
                         .padding(horizontal = 12.dp)
                         .padding(bottom = 12.dp),
                     insideMargin = PaddingValues(16.dp),
-                    shape = ContinuousRoundedRectangle(16.dp), // 添加圆角效果
-                    elevation = 4.dp // 添加阴影效果
+                    cornerRadius = 16.dp,
                 ) {
                     Row(
                         modifier = Modifier.fillMaxWidth(),

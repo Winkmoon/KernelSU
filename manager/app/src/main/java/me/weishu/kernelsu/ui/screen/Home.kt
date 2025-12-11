@@ -321,19 +321,14 @@ private fun StatusCard(
     val topAppBarScrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
 
     Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 8.dp)
-            .hazeEffect(StatusCardHazeState, StatusCardHazeStyle)
-            .clickable(indication = null, interactionSource = remember { MutableInteractionSource() }) {}
-            .clip(MaterialTheme.shapes.medium), // 添加圆角
-        shape = ContinuousRoundedRectangle(16.dp), // 设置圆角半径
-        colors = CardDefaults.cardColors(
-            containerColor = colorScheme.surface,
-            contentColor = colorScheme.onSurface,
-        ),
-        elevation = CardDefaults.cardElevation(4.dp), // 统一阴影深度
-    ) {
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp, vertical = 8.dp)
+                .hazeEffect(StatusCardHazeState, StatusCardHazeStyle)
+                .clickable(indication = null, interactionSource = remember { MutableInteractionSource() }) {}
+                .clip(MaterialTheme.shapes.medium), // 添加圆角
+            cornerRadius = 16.dp, // 设置圆角半径
+        ) {
         when {
             ksuVersion != null -> {
                 val safeMode = when {
@@ -360,15 +355,7 @@ private fun StatusCard(
                         modifier = Modifier
                             .weight(1f)
                             .fillMaxHeight(),
-                        shape = ContinuousRoundedRectangle(16.dp),
-                        elevation = CardDefaults.cardElevation(4.dp),
-                        colors = CardDefaults.defaultColors(
-                            color = when {
-                                isDynamicColor -> colorScheme.secondaryContainer
-                                isInDarkTheme(themeMode) -> Color(0xFF1A3825)
-                                else -> Color(0xFFDFFAE4)
-                            }
-                        ),
+                        cornerRadius = 16.dp,
                         onClick = {
                             if (kernelVersion.isGKI()) onClickInstall()
                         },
@@ -490,14 +477,13 @@ private fun StatusCard(
 
             kernelVersion.isGKI() -> {
                 Card(
-                    shape = ContinuousRoundedRectangle(16.dp),
-                    elevation = CardDefaults.cardElevation(4.dp),
-                    onClick = {
-                        if (kernelVersion.isGKI()) onClickInstall()
-                    },
-                    showIndication = true,
-                    pressFeedbackType = PressFeedbackType.Sink
-                ) {
+                cornerRadius = 16.dp,
+                onClick = {
+                    if (kernelVersion.isGKI()) onClickInstall()
+                },
+                showIndication = true,
+                pressFeedbackType = PressFeedbackType.Sink
+            ) {
                     BasicComponent(
                         title = stringResource(R.string.home_not_installed),
                         summary = stringResource(R.string.home_click_to_install),
@@ -516,14 +502,13 @@ private fun StatusCard(
 
             else -> {
                 Card(
-                    shape = ContinuousRoundedRectangle(16.dp),
-                    elevation = CardDefaults.cardElevation(4.dp),
-                    onClick = {
-                        if (kernelVersion.isGKI()) onClickInstall()
-                    },
-                    showIndication = true,
-                    pressFeedbackType = PressFeedbackType.Sink
-                ) {
+                cornerRadius = 16.dp,
+                onClick = {
+                    if (kernelVersion.isGKI()) onClickInstall()
+                },
+                showIndication = true,
+                pressFeedbackType = PressFeedbackType.Sink
+            ) {
                     BasicComponent(
                         title = stringResource(R.string.home_unsupported),
                         summary = stringResource(R.string.home_unsupported_reason),
@@ -564,11 +549,7 @@ fun WarningCard(
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 8.dp)
             .clip(MaterialTheme.shapes.medium), // 添加圆角
-        shape = ContinuousRoundedRectangle(16.dp), // 设置圆角半径
-        colors = CardDefaults.cardColors(
-            containerColor = actualColor.copy(alpha = 0.1f),
-        ),
-        elevation = CardDefaults.cardElevation(4.dp), // 增加阴影深度
+        cornerRadius = 16.dp, // 设置圆角半径
     ) {
         onClick = {
             onClick?.invoke()
@@ -606,8 +587,7 @@ fun LearnMoreCard() {
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 8.dp),
-        shape = ContinuousRoundedRectangle(16.dp),
-        elevation = CardDefaults.cardElevation(4.dp),
+        cornerRadius = 16.dp,
     ) {
         BasicComponent(
             title = stringResource(R.string.home_learn_kernelsu),
@@ -635,8 +615,7 @@ fun DonateCard() {
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 8.dp),
-        shape = ContinuousRoundedRectangle(16.dp),
-        elevation = CardDefaults.cardElevation(4.dp),
+        cornerRadius = 16.dp,
     ) {
         BasicComponent(
             title = stringResource(R.string.home_support_title),
@@ -655,6 +634,12 @@ fun DonateCard() {
             insideMargin = PaddingValues(18.dp)
         )
     }
+}
+
+fun getManagerVersion(context: Context): Pair<String, Long> {
+    val packageInfo = context.packageManager.getPackageInfo(context.packageName, 0)!!
+    val versionCode = PackageInfoCompat.getLongVersionCode(packageInfo)
+    return Pair(packageInfo.versionName!!, versionCode)
 }
 
 @Composable
@@ -685,8 +670,7 @@ private fun InfoCard() {
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 8.dp),
-        shape = ContinuousRoundedRectangle(16.dp),
-        elevation = CardDefaults.cardElevation(4.dp),
+        cornerRadius = 16.dp,
     ) {
         Column(
             modifier = Modifier
@@ -712,10 +696,4 @@ private fun InfoCard() {
             )
         }
     }
-}
-
-fun getManagerVersion(context: Context): Pair<String, Long> {
-    val packageInfo = context.packageManager.getPackageInfo(context.packageName, 0)!!
-    val versionCode = PackageInfoCompat.getLongVersionCode(packageInfo)
-    return Pair(packageInfo.versionName!!, versionCode)
 }

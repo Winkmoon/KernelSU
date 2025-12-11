@@ -51,6 +51,7 @@ import me.weishu.kernelsu.ui.util.setAppProfileTemplate
 import me.weishu.kernelsu.ui.viewmodel.TemplateViewModel
 import me.weishu.kernelsu.ui.viewmodel.toJSON
 import top.yukonga.miuix.kmp.basic.Card
+import top.yukonga.miuix.kmp.basic.CardDefaults
 import top.yukonga.miuix.kmp.basic.Icon
 import top.yukonga.miuix.kmp.basic.IconButton
 import top.yukonga.miuix.kmp.basic.MiuixScrollBehavior
@@ -166,8 +167,7 @@ fun TemplateEditorScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(12.dp),
-                    shape = ContinuousRoundedRectangle(16.dp), // 添加圆角效果
-                    elevation = 4.dp // 添加阴影效果
+                    cornerRadius = 16.dp,
                 ) {
                     var errorHint by rememberSaveable { mutableStateOf(false) }
 

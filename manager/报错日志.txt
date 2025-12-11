@@ -1,0 +1,181 @@
+> Task :app:mergeReleaseShaders
+> Task :app:processReleaseManifestForPackage
+> Task :app:compileReleaseShaders NO-SOURCE
+> Task :app:generateReleaseAssets UP-TO-DATE
+> Task :app:mergeReleaseAssets
+> Task :app:compressReleaseAssets
+> Task :app:processReleaseResources
+> Task :app:validateSigningRelease
+> Task :app:writeReleaseAppMetadata
+> Task :app:writeReleaseSigningConfigVersions
+> Task :app:kspReleaseKotlin
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/component/BottomBar.kt:51:14 Unresolved reference 'padding'.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/About.kt:155:21 No parameter with name 'shape' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/About.kt:156:21 No parameter with name 'elevation' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/AppProfile.kt:100:47 Unresolved reference 'shapeScheme'.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/AppProfile.kt:270:13 No parameter with name 'shape' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/AppProfile.kt:271:13 No parameter with name 'elevation' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/AppProfile.kt:369:13 No parameter with name 'shape' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/AppProfile.kt:370:13 No parameter with name 'elevation' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/AppProfile.kt:458:25 No parameter with name 'shape' found.
+
+> Task :app:compileReleaseKotlin FAILED
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/AppProfile.kt:459:25 No parameter with name 'elevation' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/AppProfile.kt:496:17 No parameter with name 'shape' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/AppProfile.kt:497:17 No parameter with name 'elevation' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/AppProfile.kt:524:21 No parameter with name 'shape' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/AppProfile.kt:525:21 No parameter with name 'elevation' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/AppProfile.kt:669:9 No parameter with name 'shape' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/AppProfile.kt:670:9 No parameter with name 'elevation' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:204:21 Unresolved reference 'InfoCard'.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:205:21 Unresolved reference 'DonateCard'.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:206:21 Unresolved reference 'LearnMoreCard'.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:226:30 Unresolved reference 'getManagerVersion'.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:315:32 Destructuring of type 'Boolean' requires operator function 'component1()'.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:315:32 Destructuring of type 'Boolean' requires operator function 'component2()'.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:321:35 Unresolved reference 'TopAppBarDefaults'.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:321:74 Unresolved reference 'rememberTopAppBarState'.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:327:25 Unresolved reference 'StatusCardHazeState'.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:327:46 Unresolved reference 'StatusCardHazeStyle'.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:328:14 Unresolved reference 'clickable'.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:328:63 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:328:74 Unresolved reference 'MutableInteractionSource'.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:329:19 Unresolved reference 'MaterialTheme'.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:330:9 No parameter with name 'shape' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:331:31 Unresolved reference 'cardColors'.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:335:9 No parameter with name 'elevation' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:335:34 Unresolved reference 'cardElevation'.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:359:21 None of the following candidates is applicable:
+fun Card(modifier: Modifier = ..., cornerRadius: Dp = ..., insideMargin: PaddingValues = ..., colors: CardColors = ..., content: ComposableFunction1<ColumnScope, Unit>): Unit
+fun Card(modifier: Modifier = ..., cornerRadius: Dp = ..., insideMargin: PaddingValues = ..., colors: CardColors = ..., pressFeedbackType: PressFeedbackType = ..., showIndication: Boolean? = ..., onClick: (() -> Unit)? = ..., onLongPress: (() -> Unit)? = ..., content: ComposableFunction1<ColumnScope, Unit>): Unit
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:364:50 Unresolved reference 'cardElevation'.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:378:25 @Composable invocations can only happen from the context of a @Composable function
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:424:25 None of the following candidates is applicable:
+fun Card(modifier: Modifier = ..., cornerRadius: Dp = ..., insideMargin: PaddingValues = ..., colors: CardColors = ..., content: ComposableFunction1<ColumnScope, Unit>): Unit
+fun Card(modifier: Modifier = ..., cornerRadius: Dp = ..., insideMargin: PaddingValues = ..., colors: CardColors = ..., pressFeedbackType: PressFeedbackType = ..., showIndication: Boolean? = ..., onClick: (() -> Unit)? = ..., onLongPress: (() -> Unit)? = ..., content: ComposableFunction1<ColumnScope, Unit>): Unit
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:429:54 Unresolved reference 'cardElevation'.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:435:29 @Composable invocations can only happen from the context of a @Composable function
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:456:25 None of the following candidates is applicable:
+fun Card(modifier: Modifier = ..., cornerRadius: Dp = ..., insideMargin: PaddingValues = ..., colors: CardColors = ..., content: ComposableFunction1<ColumnScope, Unit>): Unit
+fun Card(modifier: Modifier = ..., cornerRadius: Dp = ..., insideMargin: PaddingValues = ..., colors: CardColors = ..., pressFeedbackType: PressFeedbackType = ..., showIndication: Boolean? = ..., onClick: (() -> Unit)? = ..., onLongPress: (() -> Unit)? = ..., content: ComposableFunction1<ColumnScope, Unit>): Unit
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:461:54 Unresolved reference 'cardElevation'.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:467:29 @Composable invocations can only happen from the context of a @Composable function
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:492:17 None of the following candidates is applicable:
+fun Card(modifier: Modifier = ..., cornerRadius: Dp = ..., insideMargin: PaddingValues = ..., colors: CardColors = ..., content: ComposableFunction1<ColumnScope, Unit>): Unit
+fun Card(modifier: Modifier = ..., cornerRadius: Dp = ..., insideMargin: PaddingValues = ..., colors: CardColors = ..., pressFeedbackType: PressFeedbackType = ..., showIndication: Boolean? = ..., onClick: (() -> Unit)? = ..., onLongPress: (() -> Unit)? = ..., content: ComposableFunction1<ColumnScope, Unit>): Unit
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:494:46 Unresolved reference 'cardElevation'.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:501:21 @Composable invocations can only happen from the context of a @Composable function
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:502:33 @Composable invocations can only happen from the context of a @Composable function
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:503:35 @Composable invocations can only happen from the context of a @Composable function
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:518:17 None of the following candidates is applicable:
+fun Card(modifier: Modifier = ..., cornerRadius: Dp = ..., insideMargin: PaddingValues = ..., colors: CardColors = ..., content: ComposableFunction1<ColumnScope, Unit>): Unit
+fun Card(modifier: Modifier = ..., cornerRadius: Dp = ..., insideMargin: PaddingValues = ..., colors: CardColors = ..., pressFeedbackType: PressFeedbackType = ..., showIndication: Boolean? = ..., onClick: (() -> Unit)? = ..., onLongPress: (() -> Unit)? = ..., content: ComposableFunction1<ColumnScope, Unit>): Unit
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:520:46 Unresolved reference 'cardElevation'.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:527:21 @Composable invocations can only happen from the context of a @Composable function
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:528:33 @Composable invocations can only happen from the context of a @Composable function
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:529:35 @Composable invocations can only happen from the context of a @Composable function
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:566:14 Unresolved reference 'clip'.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:566:19 Unresolved reference 'MaterialTheme'.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:567:9 No parameter with name 'shape' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:568:31 Unresolved reference 'cardColors'.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:571:9 No parameter with name 'elevation' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:571:34 Unresolved reference 'cardElevation'.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:573:9 'val' cannot be reassigned.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:575:10 Syntax error: Unexpected tokens (use ';' to separate expressions on the same line).
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:576:9 Unresolved reference 'colors'.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:582:10 Syntax error: Unexpected tokens (use ';' to separate expressions on the same line).
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:583:9 Unresolved reference 'showIndication'.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:583:41 Syntax error: Unexpected tokens (use ';' to separate expressions on the same line).
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:584:9 Unresolved reference 'pressFeedbackType'.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:585:5 Syntax error: Expecting an element.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:586:9 @Composable invocations can only happen from the context of a @Composable function
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:609:9 No parameter with name 'shape' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:610:9 No parameter with name 'elevation' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:610:34 Unresolved reference 'cardElevation'.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:638:9 No parameter with name 'shape' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:639:9 No parameter with name 'elevation' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:639:34 Unresolved reference 'cardElevation'.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:661:1 Modifier 'private' is not applicable to 'local function'.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:683:26 Unresolved reference 'getManagerVersion'.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:688:9 No parameter with name 'shape' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:689:9 No parameter with name 'elevation' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:689:34 Unresolved reference 'cardElevation'.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Home.kt:721:2 Syntax error: Expecting '}'.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Install.kt:208:21 No parameter with name 'shape' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Install.kt:209:21 No parameter with name 'elevation' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Install.kt:224:29 No parameter with name 'shape' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Install.kt:225:29 No parameter with name 'elevation' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Install.kt:266:21 No parameter with name 'shape' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Install.kt:267:21 No parameter with name 'elevation' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Module.kt:932:9 No parameter with name 'shape' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Module.kt:933:9 No parameter with name 'elevation' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/ModuleRepo.kt:305:21 None of the following candidates is applicable:
+fun Card(modifier: Modifier = ..., cornerRadius: Dp = ..., insideMargin: PaddingValues = ..., colors: CardColors = ..., content: ComposableFunction1<ColumnScope, Unit>): Unit
+fun Card(modifier: Modifier = ..., cornerRadius: Dp = ..., insideMargin: PaddingValues = ..., colors: CardColors = ..., pressFeedbackType: PressFeedbackType = ..., showIndication: Boolean? = ..., onClick: (() -> Unit)? = ..., onLongPress: (() -> Unit)? = ..., content: ComposableFunction1<ColumnScope, Unit>): Unit
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/ModuleRepo.kt:328:25 @Composable invocations can only happen from the context of a @Composable function
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/ModuleRepo.kt:506:29 None of the following candidates is applicable:
+fun Card(modifier: Modifier = ..., cornerRadius: Dp = ..., insideMargin: PaddingValues = ..., colors: CardColors = ..., content: ComposableFunction1<ColumnScope, Unit>): Unit
+fun Card(modifier: Modifier = ..., cornerRadius: Dp = ..., insideMargin: PaddingValues = ..., colors: CardColors = ..., pressFeedbackType: PressFeedbackType = ..., showIndication: Boolean? = ..., onClick: (() -> Unit)? = ..., onLongPress: (() -> Unit)? = ..., content: ComposableFunction1<ColumnScope, Unit>): Unit
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/ModuleRepo.kt:531:33 @Composable invocations can only happen from the context of a @Composable function
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/ModuleRepo.kt:775:25 No parameter with name 'shape' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/ModuleRepo.kt:776:25 No parameter with name 'elevation' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/ModuleRepo.kt:833:21 No parameter with name 'shape' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/ModuleRepo.kt:834:21 No parameter with name 'elevation' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/ModuleRepo.kt:1038:21 No parameter with name 'shape' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/ModuleRepo.kt:1039:21 No parameter with name 'elevation' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/ModuleRepo.kt:1099:21 No parameter with name 'shape' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/ModuleRepo.kt:1100:21 No parameter with name 'elevation' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Settings.kt:146:21 No parameter with name 'shape' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Settings.kt:147:21 No parameter with name 'elevation' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Settings.kt:198:21 No parameter with name 'shape' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Settings.kt:199:21 No parameter with name 'elevation' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Settings.kt:287:25 No parameter with name 'shape' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Settings.kt:288:25 No parameter with name 'elevation' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Settings.kt:316:25 No parameter with name 'shape' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Settings.kt:317:25 No parameter with name 'elevation' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Settings.kt:510:25 No parameter with name 'shape' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Settings.kt:511:25 No parameter with name 'elevation' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Settings.kt:561:25 No parameter with name 'shape' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Settings.kt:562:25 No parameter with name 'elevation' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Settings.kt:590:21 No parameter with name 'shape' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Settings.kt:591:21 No parameter with name 'elevation' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/SuperUser.kt:406:13 No parameter with name 'shape' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/SuperUser.kt:407:13 No parameter with name 'elevation' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/SuperUser.kt:510:5 None of the following candidates is applicable:
+fun Card(modifier: Modifier = ..., cornerRadius: Dp = ..., insideMargin: PaddingValues = ..., colors: CardColors = ..., content: ComposableFunction1<ColumnScope, Unit>): Unit
+fun Card(modifier: Modifier = ..., cornerRadius: Dp = ..., insideMargin: PaddingValues = ..., colors: CardColors = ..., pressFeedbackType: PressFeedbackType = ..., showIndication: Boolean? = ..., onClick: (() -> Unit)? = ..., onLongPress: (() -> Unit)? = ..., content: ComposableFunction1<ColumnScope, Unit>): Unit
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/SuperUser.kt:522:9 @Composable invocations can only happen from the context of a @Composable function
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Template.kt:312:5 None of the following candidates is applicable:
+fun Card(modifier: Modifier = ..., cornerRadius: Dp = ..., insideMargin: PaddingValues = ..., colors: CardColors = ..., content: ComposableFunction1<ColumnScope, Unit>): Unit
+fun Card(modifier: Modifier = ..., cornerRadius: Dp = ..., insideMargin: PaddingValues = ..., colors: CardColors = ..., pressFeedbackType: PressFeedbackType = ..., showIndication: Boolean? = ..., onClick: (() -> Unit)? = ..., onLongPress: (() -> Unit)? = ..., content: ComposableFunction1<ColumnScope, Unit>): Unit
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/Template.kt:327:9 @Composable invocations can only happen from the context of a @Composable function
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/TemplateEditor.kt:169:21 No parameter with name 'shape' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/screen/TemplateEditor.kt:170:21 No parameter with name 'elevation' found.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/util/LogEvent.kt:8:37 Unresolved reference 'getManagerVersion'.
+e: file:///home/runner/work/KernelSU/KernelSU/manager/app/src/main/java/me/weishu/kernelsu/ui/util/LogEvent.kt:81:34 Unresolved reference 'getManagerVersion'.
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_3-1765442514115.json
+
+[Incubating] Problems report is available at: file:///home/runner/work/KernelSU/KernelSU/manager/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:compileReleaseKotlin'.
+> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+   > Compilation error. See log for more details
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to generate a Build Scan (powered by Develocity).
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 5m 27s
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.2.0/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+48 actionable tasks: 47 executed, 1 up-to-date
+Error: Process completed with exit code 1.

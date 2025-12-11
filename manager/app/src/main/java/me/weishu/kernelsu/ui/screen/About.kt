@@ -47,6 +47,7 @@ import dev.chrisbanes.haze.hazeSource
 import me.weishu.kernelsu.BuildConfig
 import me.weishu.kernelsu.R
 import top.yukonga.miuix.kmp.basic.Card
+import top.yukonga.miuix.kmp.basic.CardDefaults
 import top.yukonga.miuix.kmp.basic.Icon
 import top.yukonga.miuix.kmp.basic.IconButton
 import top.yukonga.miuix.kmp.basic.MiuixScrollBehavior
@@ -152,8 +153,7 @@ fun AboutScreen(navigator: DestinationsNavigator) {
             item {
                 Card(
                     modifier = Modifier.padding(bottom = 12.dp),
-                    shape = ContinuousRoundedRectangle(16.dp), // 添加圆角效果
-                    elevation = 4.dp // 添加阴影效果
+                    cornerRadius = 16.dp, // 添加圆角效果
                 ) {
                     result.forEach {
                         SuperArrow(

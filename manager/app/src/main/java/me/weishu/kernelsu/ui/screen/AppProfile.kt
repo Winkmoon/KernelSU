@@ -78,6 +78,7 @@ import me.weishu.kernelsu.ui.viewmodel.SuperUserViewModel
 import me.weishu.kernelsu.ui.viewmodel.getTemplateInfoById
 import top.yukonga.miuix.kmp.basic.BasicComponent
 import top.yukonga.miuix.kmp.basic.Card
+import top.yukonga.miuix.kmp.basic.CardDefaults
 import top.yukonga.miuix.kmp.basic.Icon
 import top.yukonga.miuix.kmp.basic.IconButton
 import top.yukonga.miuix.kmp.basic.ListPopup
@@ -97,7 +98,7 @@ import top.yukonga.miuix.kmp.icon.icons.useful.Back
 import top.yukonga.miuix.kmp.icon.icons.useful.ImmersionMore
 import top.yukonga.miuix.kmp.theme.MiuixTheme.colorScheme
 import top.yukonga.miuix.kmp.utils.getWindowSize
-import top.yukonga.miuix.kmp.theme.MiuixTheme.shapeScheme
+
 import top.yukonga.miuix.kmp.utils.overScrollVertical
 import top.yukonga.miuix.kmp.utils.scrollEndHaptic
 
@@ -268,7 +269,7 @@ private fun AppProfileInner(
                 .padding(bottom = 12.dp),
             insideMargin = PaddingValues(horizontal = 16.dp, vertical = 14.dp),
             shape = ContinuousRoundedRectangle(16.dp),
-            elevation = 4.dp
+            elevation = CardDefaults.cardElevation(4.dp)
         ) {
             Row(
                 verticalAlignment = Alignment.CenterVertically
@@ -367,7 +368,7 @@ private fun AppProfileInner(
                 .padding(horizontal = 12.dp)
                 .padding(bottom = 12.dp),
             shape = ContinuousRoundedRectangle(16.dp),
-            elevation = 4.dp
+            elevation = CardDefaults.cardElevation(4.dp)
         ) {
             SuperSwitch(
                 leftAction = {
@@ -456,7 +457,7 @@ private fun AppProfileInner(
                             .padding(horizontal = 12.dp)
                             .padding(bottom = if (rootMode != Mode.Default) 12.dp else 0.dp),
                         shape = ContinuousRoundedRectangle(16.dp),
-                        elevation = 4.dp
+                elevation = CardDefaults.cardElevation(4.dp)
                     ) {
                 AnimatedVisibility(
                     visible = rootMode == Mode.Template,
@@ -494,7 +495,7 @@ private fun AppProfileInner(
                     .padding(horizontal = 12.dp)
                     .padding(bottom = if (rootMode != Mode.Default) 12.dp else 0.dp),
                 shape = ContinuousRoundedRectangle(16.dp), // 添加圆角效果
-                elevation = 4.dp // 添加阴影效果
+                elevation = CardDefaults.cardElevation(4.dp) // 添加阴影效果
             ) {
                 AnimatedVisibility(
                     visible = nonRootMode == Mode.Custom,
@@ -522,7 +523,7 @@ private fun AppProfileInner(
                         .padding(horizontal = 12.dp)
                         .padding(bottom = 12.dp),
                     shape = ContinuousRoundedRectangle(16.dp),
-                    elevation = 4.dp
+                    elevation = CardDefaults.cardElevation(4.dp)
                 ) {
                 Spacer(Modifier.height(3.dp))
                 affectedApps.forEach { app ->
@@ -667,7 +668,7 @@ private fun ProfileBox(
             .fillMaxWidth()
             .padding(horizontal = 12.dp),
         shape = ContinuousRoundedRectangle(16.dp),
-        elevation = 4.dp
+        elevation = CardDefaults.cardElevation(4.dp)
     ) {
         SuperDropdown(
             title = stringResource(R.string.profile),

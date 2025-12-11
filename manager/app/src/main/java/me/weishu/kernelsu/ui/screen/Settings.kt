@@ -69,6 +69,7 @@ import me.weishu.kernelsu.ui.util.execKsud
 import me.weishu.kernelsu.ui.util.getFeaturePersistValue
 import me.weishu.kernelsu.ui.util.getFeatureStatus
 import top.yukonga.miuix.kmp.basic.Card
+import top.yukonga.miuix.kmp.basic.CardDefaults
 import top.yukonga.miuix.kmp.basic.Icon
 import top.yukonga.miuix.kmp.basic.MiuixScrollBehavior
 import top.yukonga.miuix.kmp.basic.Scaffold
@@ -143,8 +144,7 @@ fun SettingPager(
                     modifier = Modifier
                         .padding(top = 12.dp)
                         .fillMaxWidth(),
-                    shape = ContinuousRoundedRectangle(16.dp), // 添加圆角效果
-                    elevation = 4.dp // 添加阴影效果
+                    cornerRadius = 16.dp,
                 ) {
                     SuperSwitch(
                         title = stringResource(id = R.string.settings_check_update),
@@ -195,8 +195,7 @@ fun SettingPager(
                     modifier = Modifier
                         .padding(top = 12.dp)
                         .fillMaxWidth(),
-                    shape = ContinuousRoundedRectangle(16.dp), // 添加圆角效果
-                    elevation = 4.dp // 添加阴影效果
+                    cornerRadius = 16.dp,
                 ) {
                     val themeItems = listOf(
                         stringResource(id = R.string.settings_theme_mode_system),
@@ -284,8 +283,7 @@ fun SettingPager(
                         modifier = Modifier
                             .padding(top = 12.dp)
                             .fillMaxWidth(),
-                        shape = ContinuousRoundedRectangle(16.dp), // 添加圆角效果
-                        elevation = 4.dp // 添加阴影效果
+                        cornerRadius = 16.dp,
                     ) {
                         val profileTemplate = stringResource(id = R.string.settings_profile_template)
                         SuperArrow(
@@ -313,8 +311,7 @@ fun SettingPager(
                         modifier = Modifier
                             .padding(top = 12.dp)
                             .fillMaxWidth(),
-                        shape = ContinuousRoundedRectangle(16.dp), // 添加圆角效果
-                        elevation = 4.dp // 添加阴影效果
+                        cornerRadius = 16.dp,
                     ) {
                         val modeItems = listOf(
                             stringResource(id = R.string.settings_mode_default),
@@ -507,8 +504,7 @@ fun SettingPager(
                         modifier = Modifier
                             .padding(top = 12.dp)
                             .fillMaxWidth(),
-                        shape = ContinuousRoundedRectangle(16.dp), // 添加圆角效果
-                        elevation = 4.dp // 添加阴影效果
+                        cornerRadius = 16.dp,
                     ) {
                         var umountChecked by rememberSaveable { mutableStateOf(Natives.isDefaultUmountModules()) }
                         SuperSwitch(
@@ -558,8 +554,7 @@ fun SettingPager(
                         modifier = Modifier
                             .padding(top = 12.dp)
                             .fillMaxWidth(),
-                        shape = ContinuousRoundedRectangle(16.dp), // 添加圆角效果
-                        elevation = 4.dp // 添加阴影效果
+                        cornerRadius = 16.dp,
                     ) {
                         val lkmMode = Natives.isLkmMode
                         if (lkmMode) {
@@ -587,8 +582,7 @@ fun SettingPager(
                     modifier = Modifier
                         .padding(top = 12.dp)
                         .fillMaxWidth(),
-                    shape = ContinuousRoundedRectangle(16.dp), // 添加圆角效果
-                    elevation = 4.dp // 添加阴影效果
+                    cornerRadius = 16.dp,
                 ) {
                     SuperArrow(
                         title = stringResource(id = R.string.send_log),

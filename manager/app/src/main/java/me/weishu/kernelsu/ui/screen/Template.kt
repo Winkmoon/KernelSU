@@ -311,8 +311,7 @@ private fun TemplateItem(
 ) {
     Card(
         modifier = Modifier.padding(bottom = 12.dp),
-        shape = ContinuousRoundedRectangle(16.dp), // 添加圆角效果
-        elevation = 4.dp, // 添加阴影效果
+        cornerRadius = 16.dp,
         onClick = {
             navigator.navigate(TemplateEditorScreenDestination(template, !template.local)) {
                 popUpTo(TemplateEditorScreenDestination) {

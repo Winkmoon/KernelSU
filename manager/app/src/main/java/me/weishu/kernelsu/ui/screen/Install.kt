@@ -70,6 +70,7 @@ import me.weishu.kernelsu.ui.util.isAbDevice
 import me.weishu.kernelsu.ui.util.rootAvailable
 import top.yukonga.miuix.kmp.basic.ButtonDefaults
 import top.yukonga.miuix.kmp.basic.Card
+import top.yukonga.miuix.kmp.basic.CardDefaults
 import top.yukonga.miuix.kmp.basic.Icon
 import top.yukonga.miuix.kmp.basic.IconButton
 import top.yukonga.miuix.kmp.basic.MiuixScrollBehavior
@@ -205,8 +206,7 @@ fun InstallScreen(navigator: DestinationsNavigator) {
                 Card(
                     modifier = Modifier
                         .fillMaxWidth(),
-                    shape = ContinuousRoundedRectangle(16.dp), // 添加圆角效果
-                    elevation = 4.dp // 添加阴影效果
+                    cornerRadius = 16.dp,
                 ) {
                     SelectInstallMethod { method ->
                         installMethod = method
@@ -221,8 +221,7 @@ fun InstallScreen(navigator: DestinationsNavigator) {
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(top = 12.dp),
-                            shape = ContinuousRoundedRectangle(16.dp), // 添加圆角效果
-                            elevation = 4.dp // 添加阴影效果
+                            cornerRadius = 16.dp,
                         ) {
                         val isOta = installMethod is InstallMethod.DirectInstallToInactiveSlot
                         val suffix = produceState(initialValue = "", isOta) {
@@ -263,8 +262,7 @@ fun InstallScreen(navigator: DestinationsNavigator) {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(top = 12.dp),
-                    shape = ContinuousRoundedRectangle(16.dp), // 添加圆角效果
-                    elevation = 4.dp // 添加阴影效果
+                    cornerRadius = 16.dp, // 添加圆角效果
                 ) {
                     SuperArrow(
                         title = stringResource(id = R.string.install_upload_lkm_file),

@@ -83,6 +83,7 @@ import me.weishu.kernelsu.ui.util.pickPrimary
 import me.weishu.kernelsu.ui.viewmodel.SuperUserViewModel
 import top.yukonga.miuix.kmp.basic.BasicComponent
 import top.yukonga.miuix.kmp.basic.Card
+import top.yukonga.miuix.kmp.basic.CardDefaults
 import top.yukonga.miuix.kmp.basic.Icon
 import top.yukonga.miuix.kmp.basic.IconButton
 import top.yukonga.miuix.kmp.basic.ListPopup
@@ -403,8 +404,7 @@ private fun SimpleAppItem(
         Card(
             modifier = Modifier
                 .padding(start = 6.dp, end = 12.dp, bottom = 6.dp),
-            shape = ContinuousRoundedRectangle(16.dp), // 添加圆角效果
-            elevation = 4.dp // 添加阴影效果
+            cornerRadius = 16.dp,
         ) {
             BasicComponent(
                 title = app.label,
@@ -511,8 +511,7 @@ private fun GroupItem(
         modifier = Modifier
             .padding(horizontal = 12.dp)
             .padding(bottom = 12.dp),
-        shape = ContinuousRoundedRectangle(16.dp), // 添加圆角效果
-        elevation = 4.dp, // 添加阴影效果
+        cornerRadius = 16.dp,
         onClick = onClickPrimary,
         onLongPress = if (group.apps.size > 1) onToggleExpand else null,
         pressFeedbackType = PressFeedbackType.Sink,
