@@ -48,6 +48,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.dropUnlessResumed
+import com.kyant.capsule.ContinuousRoundedRectangle
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootGraph
 import com.ramcosta.composedestinations.generated.destinations.FlashScreenDestination
@@ -204,6 +205,8 @@ fun InstallScreen(navigator: DestinationsNavigator) {
                 Card(
                     modifier = Modifier
                         .fillMaxWidth(),
+                    shape = ContinuousRoundedRectangle(16.dp), // 添加圆角效果
+                    elevation = 4.dp // 添加阴影效果
                 ) {
                     SelectInstallMethod { method ->
                         installMethod = method
@@ -215,10 +218,12 @@ fun InstallScreen(navigator: DestinationsNavigator) {
                     exit = shrinkVertically()
                 ) {
                     Card(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(top = 12.dp),
-                    ) {
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(top = 12.dp),
+                            shape = ContinuousRoundedRectangle(16.dp), // 添加圆角效果
+                            elevation = 4.dp // 添加阴影效果
+                        ) {
                         val isOta = installMethod is InstallMethod.DirectInstallToInactiveSlot
                         val suffix = produceState(initialValue = "", isOta) {
                             value = getSlotSuffix(isOta)
@@ -258,6 +263,8 @@ fun InstallScreen(navigator: DestinationsNavigator) {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(top = 12.dp),
+                    shape = ContinuousRoundedRectangle(16.dp), // 添加圆角效果
+                    elevation = 4.dp // 添加阴影效果
                 ) {
                     SuperArrow(
                         title = stringResource(id = R.string.install_upload_lkm_file),

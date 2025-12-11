@@ -308,6 +308,8 @@ fun ModuleRepoPager(
                             .padding(horizontal = 12.dp)
                             .padding(bottom = 12.dp),
                         insideMargin = PaddingValues(16.dp),
+                        shape = ContinuousRoundedRectangle(16.dp), // 添加圆角效果
+                        elevation = 4.dp, // 添加阴影效果
                         showIndication = true,
                         pressFeedbackType = PressFeedbackType.Sink,
                         onClick = {
@@ -507,6 +509,8 @@ fun ModuleRepoPager(
                                     .padding(horizontal = 12.dp)
                                     .padding(bottom = 12.dp),
                                 insideMargin = PaddingValues(16.dp),
+                                shape = ContinuousRoundedRectangle(16.dp), // 添加圆角效果
+                                elevation = 4.dp, // 添加阴影效果
                                 showIndication = true,
                                 pressFeedbackType = PressFeedbackType.Sink,
                                 onClick = {
@@ -768,6 +772,8 @@ private fun ReadmePage(
                     Spacer(Modifier.height(6.dp))
                     Card(
                         modifier = Modifier.padding(horizontal = 12.dp),
+                        shape = ContinuousRoundedRectangle(16.dp), // 添加圆角效果
+                        elevation = 4.dp, // 添加阴影效果
                     ) {
                         Column {
                             GithubMarkdown(content = readmeHtml!!)
@@ -823,7 +829,9 @@ fun ReleasesPage(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 12.dp)
-                        .padding(bottom = 12.dp)
+                        .padding(bottom = 12.dp),
+                    shape = ContinuousRoundedRectangle(16.dp), // 添加圆角效果
+                    elevation = 4.dp // 添加阴影效果
                 ) {
                     Column {
                         Row(
@@ -1026,7 +1034,9 @@ fun InfoPage(
                 Card(
                     modifier = Modifier
                         .padding(horizontal = 12.dp),
-                    insideMargin = PaddingValues(16.dp)
+                    insideMargin = PaddingValues(16.dp),
+                    shape = ContinuousRoundedRectangle(16.dp), // 添加圆角效果
+                    elevation = 4.dp // 添加阴影效果
                 ) {
                     Column {
                         module.authorsList.forEachIndexed { index, author ->
@@ -1085,7 +1095,9 @@ fun InfoPage(
                         .fillMaxWidth()
                         .padding(horizontal = 12.dp)
                         .padding(bottom = 12.dp),
-                    insideMargin = PaddingValues(16.dp)
+                    insideMargin = PaddingValues(16.dp),
+                    shape = ContinuousRoundedRectangle(16.dp), // 添加圆角效果
+                    elevation = 4.dp // 添加阴影效果
                 ) {
                     Row(
                         modifier = Modifier.fillMaxWidth(),

@@ -151,7 +151,9 @@ fun AboutScreen(navigator: DestinationsNavigator) {
             }
             item {
                 Card(
-                    modifier = Modifier.padding(bottom = 12.dp)
+                    modifier = Modifier.padding(bottom = 12.dp),
+                    shape = ContinuousRoundedRectangle(16.dp), // 添加圆角效果
+                    elevation = 4.dp // 添加阴影效果
                 ) {
                     result.forEach {
                         SuperArrow(

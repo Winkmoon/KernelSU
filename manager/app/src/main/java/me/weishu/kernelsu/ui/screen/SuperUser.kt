@@ -402,7 +402,9 @@ private fun SimpleAppItem(
         )
         Card(
             modifier = Modifier
-                .padding(start = 6.dp, end = 12.dp, bottom = 6.dp)
+                .padding(start = 6.dp, end = 12.dp, bottom = 6.dp),
+            shape = ContinuousRoundedRectangle(16.dp), // 添加圆角效果
+            elevation = 4.dp // 添加阴影效果
         ) {
             BasicComponent(
                 title = app.label,
@@ -509,6 +511,8 @@ private fun GroupItem(
         modifier = Modifier
             .padding(horizontal = 12.dp)
             .padding(bottom = 12.dp),
+        shape = ContinuousRoundedRectangle(16.dp), // 添加圆角效果
+        elevation = 4.dp, // 添加阴影效果
         onClick = onClickPrimary,
         onLongPress = if (group.apps.size > 1) onToggleExpand else null,
         pressFeedbackType = PressFeedbackType.Sink,

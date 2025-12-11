@@ -54,6 +54,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.pm.PackageInfoCompat
 import com.ramcosta.composedestinations.generated.destinations.InstallScreenDestination
+import com.kyant.capsule.ContinuousRoundedRectangle
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import dev.chrisbanes.haze.HazeState
 import dev.chrisbanes.haze.HazeStyle
@@ -308,8 +309,30 @@ private fun StatusCard(
     onclickModule: () -> Unit = {},
     themeMode: Int,
 ) {
-    Column(
+    val context = LocalContext.current
+    val isDark = isInDarkTheme(themeMode)
+    val colorScheme = MiuixTheme.colorScheme
+    val (available, message) = remember {
+        rootAvailable()
+    }
+
+    val isInstalled = available == true
+
+    val topAppBarScrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
+
+    Card(
         modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp, vertical = 8.dp)
+            .hazeEffect(StatusCardHazeState, StatusCardHazeStyle)
+            .clickable(indication = null, interactionSource = remember { MutableInteractionSource() }) {}
+            .clip(MaterialTheme.shapes.medium), // 添加圆角
+        shape = ContinuousRoundedRectangle(16.dp), // 设置圆角半径
+        colors = CardDefaults.cardColors(
+            containerColor = colorScheme.surface,
+            contentColor = colorScheme.onSurface,
+        ),
+        elevation = CardDefaults.cardElevation(4.dp), // 统一阴影深度
     ) {
         when {
             ksuVersion != null -> {
@@ -337,6 +360,8 @@ private fun StatusCard(
                         modifier = Modifier
                             .weight(1f)
                             .fillMaxHeight(),
+                        shape = ContinuousRoundedRectangle(16.dp),
+                        elevation = CardDefaults.cardElevation(4.dp),
                         colors = CardDefaults.defaultColors(
                             color = when {
                                 isDynamicColor -> colorScheme.secondaryContainer
@@ -400,6 +425,8 @@ private fun StatusCard(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .weight(1f),
+                            shape = ContinuousRoundedRectangle(16.dp),
+                            elevation = CardDefaults.cardElevation(4.dp),
                             insideMargin = PaddingValues(16.dp),
                             onClick = { onClickSuperuser() },
                             showIndication = true,
@@ -430,6 +457,8 @@ private fun StatusCard(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .weight(1f),
+                            shape = ContinuousRoundedRectangle(16.dp),
+                            elevation = CardDefaults.cardElevation(4.dp),
                             insideMargin = PaddingValues(16.dp),
                             onClick = { onclickModule() },
                             showIndication = true,
@@ -461,6 +490,8 @@ private fun StatusCard(
 
             kernelVersion.isGKI() -> {
                 Card(
+                    shape = ContinuousRoundedRectangle(16.dp),
+                    elevation = CardDefaults.cardElevation(4.dp),
                     onClick = {
                         if (kernelVersion.isGKI()) onClickInstall()
                     },
@@ -485,6 +516,8 @@ private fun StatusCard(
 
             else -> {
                 Card(
+                    shape = ContinuousRoundedRectangle(16.dp),
+                    elevation = CardDefaults.cardElevation(4.dp),
                     onClick = {
                         if (kernelVersion.isGKI()) onClickInstall()
                     },
@@ -517,7 +550,26 @@ fun WarningCard(
     color: Color? = null,
     onClick: (() -> Unit)? = null,
 ) {
+    val isDark = isInDarkTheme(themeMode)
+    val colorScheme = MiuixTheme.colorScheme
+    val actualColor = color ?: colorScheme.error
+
+    val iconColor = when {
+        isDark -> Color.White
+        else -> Color.Black
+    }
+
     Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp, vertical = 8.dp)
+            .clip(MaterialTheme.shapes.medium), // 添加圆角
+        shape = ContinuousRoundedRectangle(16.dp), // 设置圆角半径
+        colors = CardDefaults.cardColors(
+            containerColor = actualColor.copy(alpha = 0.1f),
+        ),
+        elevation = CardDefaults.cardElevation(4.dp), // 增加阴影深度
+    ) {
         onClick = {
             onClick?.invoke()
         },
@@ -552,7 +604,10 @@ fun LearnMoreCard() {
 
     Card(
         modifier = Modifier
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp, vertical = 8.dp),
+        shape = ContinuousRoundedRectangle(16.dp),
+        elevation = CardDefaults.cardElevation(4.dp),
     ) {
         BasicComponent(
             title = stringResource(R.string.home_learn_kernelsu),
@@ -578,7 +633,10 @@ fun DonateCard() {
 
     Card(
         modifier = Modifier
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp, vertical = 8.dp),
+        shape = ContinuousRoundedRectangle(16.dp),
+        elevation = CardDefaults.cardElevation(4.dp),
     ) {
         BasicComponent(
             title = stringResource(R.string.home_support_title),
@@ -620,10 +678,16 @@ private fun InfoCard() {
             modifier = Modifier.padding(top = 2.dp, bottom = bottomPadding)
         )
     }
-    Card {
-        val context = LocalContext.current
-        val uname = Os.uname()
-        val managerVersion = getManagerVersion(context)
+    val context = LocalContext.current
+    val uname = Os.uname()
+    val managerVersion = getManagerVersion(context)
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp, vertical = 8.dp),
+        shape = ContinuousRoundedRectangle(16.dp),
+        elevation = CardDefaults.cardElevation(4.dp),
+    ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()

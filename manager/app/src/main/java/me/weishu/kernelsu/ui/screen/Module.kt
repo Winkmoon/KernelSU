@@ -928,7 +928,9 @@ fun ModuleItem(
         modifier = Modifier
             .padding(horizontal = 12.dp)
             .padding(bottom = 12.dp),
-        insideMargin = PaddingValues(16.dp)
+        insideMargin = PaddingValues(16.dp),
+        shape = ContinuousRoundedRectangle(16.dp), // 添加圆角效果
+        elevation = 4.dp // 添加阴影效果
     ) {
         Row(
             horizontalArrangement = Arrangement.spacedBy(8.dp),

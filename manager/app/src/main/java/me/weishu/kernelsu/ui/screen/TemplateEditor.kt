@@ -32,6 +32,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.dropUnlessResumed
+import com.kyant.capsule.ContinuousRoundedRectangle
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootGraph
 import com.ramcosta.composedestinations.result.ResultBackNavigator
@@ -165,6 +166,8 @@ fun TemplateEditorScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(12.dp),
+                    shape = ContinuousRoundedRectangle(16.dp), // 添加圆角效果
+                    elevation = 4.dp // 添加阴影效果
                 ) {
                     var errorHint by rememberSaveable { mutableStateOf(false) }
 

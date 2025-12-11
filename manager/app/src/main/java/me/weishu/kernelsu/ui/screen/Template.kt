@@ -62,6 +62,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.dropUnlessResumed
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.kyant.capsule.ContinuousRoundedRectangle
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootGraph
 import com.ramcosta.composedestinations.generated.destinations.TemplateEditorScreenDestination
@@ -310,6 +311,8 @@ private fun TemplateItem(
 ) {
     Card(
         modifier = Modifier.padding(bottom = 12.dp),
+        shape = ContinuousRoundedRectangle(16.dp), // 添加圆角效果
+        elevation = 4.dp, // 添加阴影效果
         onClick = {
             navigator.navigate(TemplateEditorScreenDestination(template, !template.local)) {
                 popUpTo(TemplateEditorScreenDestination) {
