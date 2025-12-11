@@ -45,6 +45,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.stringResource
@@ -312,13 +314,14 @@ private fun StatusCard(
     val context = LocalContext.current
     val isDark = isInDarkTheme(themeMode)
     val colorScheme = MiuixTheme.colorScheme
-    val (available, message) = remember {
+    val available = remember {
         rootAvailable()
     }
+    val message = ""
 
     val isInstalled = available == true
 
-    val topAppBarScrollBehavior = MiuixScrollBehavior.pinnedScrollBehavior()
+    val topAppBarScrollBehavior = MiuixScrollBehavior()
 
     Card(
             modifier = Modifier
@@ -543,13 +546,9 @@ fun WarningCard(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 8.dp)
-            .clip(MaterialTheme.shapes.medium), // 添加圆角
+            .padding(horizontal = 16.dp, vertical = 8.dp),
         cornerRadius = 16.dp, // 设置圆角半径
-    ) {
-        onClick = {
-            onClick?.invoke()
-        },
+        onClick = onClick,
         colors = CardDefaults.defaultColors(
             color = color ?: when {
                 isDynamicColor -> colorScheme.errorContainer
@@ -575,7 +574,7 @@ fun WarningCard(
 }
 
 @Composable
-fun LearnMoreCard() {
+public fun LearnMoreCard() {
     val uriHandler = LocalUriHandler.current
     val url = stringResource(R.string.home_learn_kernelsu_url)
 
@@ -604,7 +603,7 @@ fun LearnMoreCard() {
 }
 
 @Composable
-fun DonateCard() {
+public fun DonateCard() {
     val uriHandler = LocalUriHandler.current
 
     Card(
@@ -632,14 +631,14 @@ fun DonateCard() {
     }
 }
 
-fun getManagerVersion(context: Context): Pair<String, Long> {
+public fun getManagerVersion(context: Context): Pair<String, Long> {
     val packageInfo = context.packageManager.getPackageInfo(context.packageName, 0)!!
     val versionCode = PackageInfoCompat.getLongVersionCode(packageInfo)
     return Pair(packageInfo.versionName!!, versionCode)
 }
 
 @Composable
-fun InfoCard() {
+public fun InfoCard() {
     @Composable
     fun InfoText(
         title: String,
