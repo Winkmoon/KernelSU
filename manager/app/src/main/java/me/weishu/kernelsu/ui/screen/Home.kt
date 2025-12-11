@@ -49,6 +49,9 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.res.painterResource
+import androidx.compose.foundation.Image
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
@@ -137,17 +140,26 @@ fun HomePager(
         popupHost = { },
         contentWindowInsets = WindowInsets.systemBars.add(WindowInsets.displayCutout).only(WindowInsetsSides.Horizontal)
     ) { innerPadding ->
-        LazyColumn(
-            modifier = Modifier
-                .height(getWindowSize().height.dp)
-                .scrollEndHaptic()
-                .overScrollVertical()
-                .nestedScroll(scrollBehavior.nestedScrollConnection)
-                .padding(horizontal = 12.dp)
-                .hazeSource(state = hazeState),
-            contentPadding = innerPadding,
-            overscrollEffect = null,
-        ) {
+        Box(modifier = Modifier.fillMaxSize()) {
+            // 背景图片
+            Image(
+                painter = painterResource(id = R.drawable.xinran),
+                contentDescription = null,
+                modifier = Modifier.fillMaxSize(),
+                contentScale = ContentScale.Crop
+            )
+            
+            LazyColumn(
+                modifier = Modifier
+                    .height(getWindowSize().height.dp)
+                    .scrollEndHaptic()
+                    .overScrollVertical()
+                    .nestedScroll(scrollBehavior.nestedScrollConnection)
+                    .padding(horizontal = 12.dp)
+                    .hazeSource(state = hazeState),
+                contentPadding = innerPadding,
+                overscrollEffect = null,
+            ) {
             item {
                 val coroutineScope = rememberCoroutineScope()
                 val isManager = Natives.isManager
