@@ -50,7 +50,6 @@ fun BottomBar(
     NavigationBar(
         modifier = Modifier
             .padding(horizontal = 16.dp, vertical = 8.dp)
-            .clip(RoundedCornerShape(24.dp)) // 添加圆角效果
             .hazeEffect(hazeState) {
                 style = hazeStyle
                 blurRadius = 30.dp

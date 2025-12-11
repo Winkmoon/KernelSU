@@ -318,15 +318,13 @@ private fun StatusCard(
 
     val isInstalled = available == true
 
-    val topAppBarScrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
+    val topAppBarScrollBehavior = MiuixScrollBehavior.pinnedScrollBehavior()
 
     Card(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp, vertical = 8.dp)
-                .hazeEffect(StatusCardHazeState, StatusCardHazeStyle)
-                .clickable(indication = null, interactionSource = remember { MutableInteractionSource() }) {}
-                .clip(MaterialTheme.shapes.medium), // 添加圆角
+                .clickable(indication = null, interactionSource = remember { MutableInteractionSource() }) {},
             cornerRadius = 16.dp, // 设置圆角半径
         ) {
         when {
@@ -412,8 +410,7 @@ private fun StatusCard(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .weight(1f),
-                            shape = ContinuousRoundedRectangle(16.dp),
-                            elevation = CardDefaults.cardElevation(4.dp),
+                            cornerRadius = 16.dp,
                             insideMargin = PaddingValues(16.dp),
                             onClick = { onClickSuperuser() },
                             showIndication = true,
@@ -444,8 +441,7 @@ private fun StatusCard(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .weight(1f),
-                            shape = ContinuousRoundedRectangle(16.dp),
-                            elevation = CardDefaults.cardElevation(4.dp),
+                            cornerRadius = 16.dp,
                             insideMargin = PaddingValues(16.dp),
                             onClick = { onclickModule() },
                             showIndication = true,
@@ -643,7 +639,7 @@ fun getManagerVersion(context: Context): Pair<String, Long> {
 }
 
 @Composable
-private fun InfoCard() {
+fun InfoCard() {
     @Composable
     fun InfoText(
         title: String,

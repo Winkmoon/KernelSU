@@ -78,7 +78,10 @@ fun getBugreportFile(context: Context): File {
         pw.println("PREVIEW_SDK: " + Build.VERSION.PREVIEW_SDK_INT)
         pw.println("FINGERPRINT: " + Build.FINGERPRINT)
         pw.println("DEVICE: " + Build.DEVICE)
-        pw.println("Manager: " + getManagerVersion(context))
+        // 获取管理器版本信息
+        val packageInfo = context.packageManager.getPackageInfo(context.packageName, 0)!!
+        val versionCode = context.packageManager.getPackageInfo(context.packageName, 0)?.versionCode ?: 0
+        pw.println("Manager: ${packageInfo.versionName} (${versionCode})")
         pw.println("SELinux: $selinux")
 
         val uname = Os.uname()

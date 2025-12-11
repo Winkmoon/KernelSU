@@ -268,8 +268,7 @@ private fun AppProfileInner(
                 .padding(horizontal = 12.dp)
                 .padding(bottom = 12.dp),
             insideMargin = PaddingValues(horizontal = 16.dp, vertical = 14.dp),
-            shape = ContinuousRoundedRectangle(16.dp),
-            elevation = CardDefaults.cardElevation(4.dp)
+            cornerRadius = 16.dp,
         ) {
             Row(
                 verticalAlignment = Alignment.CenterVertically
@@ -367,8 +366,7 @@ private fun AppProfileInner(
                 .fillMaxWidth()
                 .padding(horizontal = 12.dp)
                 .padding(bottom = 12.dp),
-            shape = ContinuousRoundedRectangle(16.dp),
-            elevation = CardDefaults.cardElevation(4.dp)
+            cornerRadius = 16.dp,
         ) {
             SuperSwitch(
                 leftAction = {
@@ -456,8 +454,7 @@ private fun AppProfileInner(
                             .fillMaxWidth()
                             .padding(horizontal = 12.dp)
                             .padding(bottom = if (rootMode != Mode.Default) 12.dp else 0.dp),
-                        shape = ContinuousRoundedRectangle(16.dp),
-                elevation = CardDefaults.cardElevation(4.dp)
+                        cornerRadius = 16.dp,
                     ) {
                 AnimatedVisibility(
                     visible = rootMode == Mode.Template,
@@ -494,8 +491,7 @@ private fun AppProfileInner(
                     .fillMaxWidth()
                     .padding(horizontal = 12.dp)
                     .padding(bottom = if (rootMode != Mode.Default) 12.dp else 0.dp),
-                shape = ContinuousRoundedRectangle(16.dp), // 添加圆角效果
-                elevation = CardDefaults.cardElevation(4.dp) // 添加阴影效果
+                cornerRadius = 16.dp,
             ) {
                 AnimatedVisibility(
                     visible = nonRootMode == Mode.Custom,
@@ -522,8 +518,7 @@ private fun AppProfileInner(
                         .fillMaxWidth()
                         .padding(horizontal = 12.dp)
                         .padding(bottom = 12.dp),
-                    shape = ContinuousRoundedRectangle(16.dp),
-                    elevation = CardDefaults.cardElevation(4.dp)
+                    cornerRadius = 16.dp,
                 ) {
                 Spacer(Modifier.height(3.dp))
                 affectedApps.forEach { app ->
@@ -667,8 +662,7 @@ private fun ProfileBox(
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 12.dp),
-        shape = ContinuousRoundedRectangle(16.dp),
-        elevation = CardDefaults.cardElevation(4.dp)
+        cornerRadius = 16.dp,
     ) {
         SuperDropdown(
             title = stringResource(R.string.profile),
